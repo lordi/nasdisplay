@@ -43,6 +43,15 @@ FILES += $(wildcard src/p_*.s) $(wildcard src/jmptbl*.s)
 FILES += reverse/common.in reverse/dump.py reverse/Makefile reverse/README
 
 DPFINST = $(DESTDIR)/dpf
+INSTDIR = /etc/nasdisplay/
+
+install: all
+	install -d $(INSTDIR)
+	install -m644 display/nyan.png $(INSTDIR)
+	install -m644 display/display.py $(INSTDIR)
+	install -m644 display/ProggyClean.ttf $(INSTDIR)
+	install -m600 display/lcd4linux.conf $(INSTDIR)
+	install -m600 lcd4linux/lcd4linux /usr/bin
 
 installdist:
 	install -d $(DPFINST)
