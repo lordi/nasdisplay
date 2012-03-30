@@ -1,12 +1,19 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
- 
+
 import os
 import random
 from PIL import ImageFont, ImageDraw, Image
 from datetime import datetime
- 
+
 WIDTH=240
+
+def freespace(p):
+    """
+    Returns the number of free bytes on the drive that ``p`` is on
+    """
+    s = os.statvfs(p)
+    return s.f_bsize * s.f_bavail
 
 def text_centered(draw, y, text, font):
 	x = (WIDTH - font.getsize(text)[0]) / 2.0
@@ -25,9 +32,9 @@ def create_image(path):
 	font = ImageFont.truetype(font_file, 64)
 	text_centered(draw, 12, n.strftime("%H:%M"), font)
 
-	# TODO: free disk space 
 	font = ImageFont.truetype(font_file, 32)
-	text_centered(draw, 70, "XXX MB free", font)
+	gb_free = freespace('/mnt/disk1') / pow(1000,3)
+	text_centered(draw, 70, "{0} GB free".format(gb_free), font)
 
 	im.save(path, "PNG")
 
