@@ -63,11 +63,11 @@
 +
 +static unsigned int lswxl_mpp_config[] __initdata = {
 +	MPP8_GPIO,  /* HDD1 Error LED */
++	MPP11_GPIO, /* USB Vbus Power */ 
 +	MPP28_GPIO, /* HDD1 Power */
 +	MPP29_GPIO, /* HDD2 Power */
 +	MPP34_GPIO, /* FUNC2 LED */
 +	MPP36_GPIO, /* FUNC1 LED */
-+	MPP37_GPIO, /* USB Vbus Power */ 
 +	MPP38_GPIO, /* INFO LED */
 +	MPP39_GPIO, /* POWER LED */
 +	MPP40_GPIO, /* FAN Status */
@@ -137,7 +137,7 @@
 +	}
 +};
 +
-+#define LSWXL_GPIO_USB_VBUS_EN		37
++#define LSWXL_GPIO_USB_VBUS_EN		11
 +#define LSWXL_GPIO_KEY_FUNC		41
 +
 +static struct gpio_keys_button lswxl_buttons[] = {
